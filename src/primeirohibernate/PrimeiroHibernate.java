@@ -27,42 +27,27 @@ public class PrimeiroHibernate {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         
-        Criteria criteria = session.createCriteria(Aluno.class);
-        criteria.add(Restrictions.eq("nome", "Joana"));
-        criteria.setProjection(Projections.rowCount());
-        long countAluno = (Long) criteria.uniqueResult();
+        Ra ra = new Ra( 232420 );
+        ra.setAtivo(true);
         
         Aluno a = new Aluno();
-        a.setNome("Joana");
-        a.setRa(21067005);
+        a.setNome("Margarete");
         a.setAtivo(true);
         a.setDataNascimento(new Date(86,1,31));
+        a.setRa(ra);
         
         Materia m = new Materia();
         m.setDescricao("PSW");
-        
-        Ra r = new Ra();
-        r.setRa(21067003);
-        r.setAtivo(true);
-        
+                
         try{
             session = sessionFactory.openSession();
             session.beginTransaction();
-            if (countAluno == 0) {
-                session.save(a);
-            } else {
-                System.out.println("Aluno já existe!");
-            }
             
+            session.save(ra);
+            session.save(a);
             session.save(m);
-            session.save(r);
             
             session.getTransaction().commit();
-            
-            List<Aluno> alunos = session.createCriteria(Aluno.class).list();
-            for(Aluno aluno : alunos) {
-                System.out.println(aluno.getNome());
-            }
             
         }catch(Exception e) {
             session.getTransaction().rollback();

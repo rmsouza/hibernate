@@ -6,10 +6,10 @@
 package primeirohibernate;
 
 import java.util.Date;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,12 +23,13 @@ public class Aluno {
     @Id
     @GeneratedValue
     private int id;
-    @Column(name="STR_NOME")
+    
     private String nome;
-    @Column
-    private int ra;
-    @Column
+    
+    @OneToOne
+    private Ra ra;
     private boolean ativo;
+    
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
 
@@ -51,20 +52,6 @@ public class Aluno {
      */
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    /**
-     * @return the ra
-     */
-    public int getRa() {
-        return ra;
-    }
-
-    /**
-     * @param ra the ra to set
-     */
-    public void setRa(int ra) {
-        this.ra = ra;
     }
 
     /**
@@ -93,6 +80,20 @@ public class Aluno {
      */
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    /**
+     * @return the ra
+     */
+    public Ra getRa() {
+        return ra;
+    }
+
+    /**
+     * @param ra the ra to set
+     */
+    public void setRa(Ra ra) {
+        this.ra = ra;
     }
     
     

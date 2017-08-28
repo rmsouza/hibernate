@@ -5,6 +5,7 @@
  */
 package primeirohibernate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,6 +22,10 @@ public class Ra {
     private int id;
     private int ra;
     private boolean ativo;
+    
+    public Ra(int ra) {
+        this.ra = ra;
+    }
 
     /**
      * @return the id
