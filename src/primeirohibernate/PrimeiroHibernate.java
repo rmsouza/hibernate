@@ -30,15 +30,16 @@ public class PrimeiroHibernate {
         Ra ra = new Ra( 232420 );
         ra.setAtivo(true);
         
+        Materia m = new Materia();
+        m.setDescricao("PSW 2");
+        
         Aluno a = new Aluno();
         a.setNome("Margarete");
         a.setAtivo(true);
         a.setDataNascimento(new Date(86,1,31));
         a.setRa(ra);
-        
-        Materia m = new Materia();
-        m.setDescricao("PSW");
-                
+        a.setMateria(m);
+               
         try{
             session = sessionFactory.openSession();
             session.beginTransaction();

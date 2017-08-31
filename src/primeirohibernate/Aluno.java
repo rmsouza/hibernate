@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,6 +33,9 @@ public class Aluno {
     
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
+    
+    @ManyToOne
+    private Materia materia;
 
     /**
      * @return the id
@@ -94,6 +98,20 @@ public class Aluno {
      */
     public void setRa(Ra ra) {
         this.ra = ra;
+    }
+
+    /**
+     * @return the materia
+     */
+    public Materia getMateria() {
+        return materia;
+    }
+
+    /**
+     * @param materia the materia to set
+     */
+    public void setMateria(Materia materia) {
+        this.materia = materia;
     }
     
     
